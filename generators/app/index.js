@@ -75,6 +75,7 @@ module.exports = class extends Generator {
     this._moveTemplateToProject('README.md');
     this._moveToProject('.gitignore');
     this._moveToProject('.eslintrc.js');
+    this._moveToProject('.esdoc.json');
 
     // Core src files
     this._moveTemplateToProject('src/index.js');
