@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "eslint": "^3.1.1",
-    "eslint-config-xo-space": "^0.15.0",
     "gulp": "^3.9.0",
     "gulp-eslint": "^3.0.1",
     "gulp-exclude-gitignore": "^1.0.0",
@@ -39,12 +38,6 @@
     "gulp-plumber": "^1.0.0",
     "yeoman-assert": "^2.2.1",
     "yeoman-test": "^1.6.0"
-  },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "mocha": true
-    }
   },
   "repository": "alexlafroscia/generator-skatejs",
   "scripts": {
