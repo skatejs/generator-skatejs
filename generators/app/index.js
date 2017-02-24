@@ -4,6 +4,7 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const _ = require('lodash');
+const sortPackageJson = require('sort-package-json');
 
 module.exports = class extends Generator {
   initializing() {
@@ -117,7 +118,7 @@ module.exports = class extends Generator {
       pkg.author.email = this.props.authorEmail;
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg)
+    this.fs.writeJSON(this.destinationPath('package.json'), sortPackageJson(pkg));
   }
 
   install() {
