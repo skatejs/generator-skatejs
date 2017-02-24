@@ -8,6 +8,9 @@
     "email": "alexlafroscia@google.com",
     "url": "alexlafroscia.com"
   },
+  "engines": {
+    "node": ">= 6.7.0"
+  },
   "files": [
     "generators"
   ],
