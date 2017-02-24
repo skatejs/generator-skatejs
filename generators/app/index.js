@@ -74,6 +74,7 @@ module.exports = class extends Generator {
     this._generatePackageJson();
     this._moveTemplateToProject('README.md');
     this._moveToProject('.gitignore');
+    this._moveToProject('.eslintrc.js');
 
     // Core src files
     this._moveTemplateToProject('src/index.js');
@@ -130,11 +131,13 @@ module.exports = class extends Generator {
     // Development Dependencies
     this.yarnInstall([
       'babel-core',
+      'babel-eslint',
       'babel-loader',
       'babel-plugin-transform-react-jsx',
       'babel-preset-es2015',
       'esdoc',
       'eslint',
+      'eslint-plugin-import',
       'node-sass',
       'raw-loader',
       'sass-loader',

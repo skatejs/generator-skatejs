@@ -14,7 +14,7 @@ export default class extends Component {
   renderCallback() {
     return [
       style(this, css),
-      <p class='text'>
+      <p class="text">
         Hello, world! I am <%= componentName %>!
       </p>
     ];
