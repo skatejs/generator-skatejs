@@ -28,6 +28,25 @@ describe('generator-skatejs:component', function () {
     });
   });
 
+  describe('validating the component name', function() {
+    it('prevents creating components without a hyphen', function() {
+      let caughtError = false;
+
+      return helpers.run(path.join(__dirname, '../generators/component'))
+        .withPrompts({ componentName: 'foo' })
+        .toPromise()
+        .catch(function({ message }) {
+          // Make sure that the error has the right messaging
+          assert.equal(message, '`foo` is not a valid component name');
+          caughtError = true;
+        })
+        .then(function() {
+          // We want to make sure that an error was actually thrown
+          assert(caughtError, 'The generator threw an error');
+        });
+    });
+  });
+
   describe('configuring the generated component', function() {
     it('registers the component with the correct name', function() {
       return helpers.run(path.join(__dirname, '../generators/component'))

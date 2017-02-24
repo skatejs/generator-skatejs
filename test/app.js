@@ -16,7 +16,7 @@ describe('generator-skatejs:app', function () {
         });
     });
 
-    it.skip('ensures that a default component name is valid', function() {
+    it.skip('does not prompt the user with an invalid component name', function() {
       return helpers.run(path.join(__dirname, '../generators/app'))
         .inTmpDir(function() {
           // Do something to set the appname for this run

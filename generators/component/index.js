@@ -26,6 +26,11 @@ module.exports = class extends Generator {
       if (componentName) {
         this.props.componentName = componentName;
       }
+
+      componentName = this.props.componentName;
+      if (!componentName.includes('-')) {
+        throw new Error(`\`${componentName}\` is not a valid component name`);
+      }
     });
   }
 
