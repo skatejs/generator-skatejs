@@ -3,8 +3,13 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const _ = require('lodash');
 
 module.exports = class extends Generator {
+  initializing() {
+    this.props = {};
+  }
+
   prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(
@@ -19,33 +24,38 @@ module.exports = class extends Generator {
       defaultAppName = this.appname;
     }
 
-    const prompts = [
+    return this.prompt([
       {
         type: 'input',
         name: 'initialComponentName',
         message: 'What should we call the main component?',
         default: defaultAppName
-      },
-      {
-        type: 'input',
-        name: 'projectDescription',
-        message: 'How would you describe this project?'
-      },
-      {
-        type: 'input',
-        name: 'authorName',
-        message: 'What should we call you?'
-      },
-      {
-        type: 'input',
-        name: 'authorEmail',
-        message: 'What is your email address?'
       }
-    ];
+    ])
+    .then(({ initialComponentName }) => {
+      this.props.initialComponentName = initialComponentName;
 
-    return this.prompt(prompts).then((props) => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
+      return this.prompt([
+        {
+          type: 'input',
+          name: 'projectDescription',
+          message: 'How would you describe this project?',
+          default: `\`${initialComponentName}\` custom element`
+        },
+        {
+          type: 'input',
+          name: 'authorName',
+          message: 'What should we call you?'
+        },
+        {
+          type: 'input',
+          name: 'authorEmail',
+          message: 'What is your email address?'
+        }
+      ]);
+    })
+    .then((props) => {
+      this.props = _.merge(this.props, props);
     });
   }
 
@@ -60,8 +70,8 @@ module.exports = class extends Generator {
 
   writing() {
     // Basic project structure
+    this._generatePackageJson();
     this._moveTemplateToProject('README.md');
-    this._moveTemplateToProject('package.json');
     this._moveToProject('.gitignore');
 
     // Core src files
@@ -89,6 +99,25 @@ module.exports = class extends Generator {
       this.destinationPath(filePath),
       this.props
     );
+  }
+
+  _generatePackageJson() {
+    let pkg = require(this.templatePath('package.json'));
+    pkg = _.merge(pkg, {
+      name: this.props.initialComponentName,
+      description: this.props.projectDescription,
+      author: {}
+    });
+
+    if (this.props.authorName) {
+      pkg.author.name = this.props.authorName;
+    }
+
+    if (this.props.authorEmail) {
+      pkg.author.email = this.props.authorEmail;
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg)
   }
 
   install() {

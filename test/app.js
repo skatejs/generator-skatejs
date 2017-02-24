@@ -28,4 +28,64 @@ describe('generator-skatejs:app', function () {
         });
     });
   });
+
+  describe('generating the `package.json`', function() {
+    describe('setting the package name', function() {
+      it('sets the package name the same as the initial component', function() {
+        return helpers.run(path.join(__dirname, '../generators/app'))
+          .withPrompts({ initialComponentName: 'foo-bar-baz' })
+          .toPromise()
+          .then(function() {
+            assert.jsonFileContent('package.json', {
+              name: 'foo-bar-baz'
+            });
+          });
+      });
+    });
+
+    it('generates default description based on the component name', function() {
+      return helpers.run(path.join(__dirname, '../generators/app'))
+        .withPrompts({ initialComponentName: 'foo-bar-baz' })
+        .toPromise()
+        .then(function() {
+          assert.jsonFileContent('package.json', {
+            description: '`foo-bar-baz` custom element'
+          });
+        });
+    });
+
+    describe('the `author` field', function() {
+      it('sets the name correctly if present', function() {
+        return helpers.run(path.join(__dirname, '../generators/app'))
+          .withPrompts({
+            initialComponentName: 'foo-bar-baz',
+            authorName: 'MeowMeow FuzzyFace'
+          })
+          .toPromise()
+          .then(function() {
+            assert.jsonFileContent('package.json', {
+              author: {
+                name: 'MeowMeow FuzzyFace'
+              }
+            });
+          });
+      });
+
+      it('sets the email correctly if present', function() {
+        return helpers.run(path.join(__dirname, '../generators/app'))
+          .withPrompts({
+            initialComponentName: 'foo-bar-baz',
+            authorEmail: 'meowmeow@lapd.gov'
+          })
+          .toPromise()
+          .then(function() {
+            assert.jsonFileContent('package.json', {
+              author: {
+                email: 'meowmeow@lapd.gov'
+              }
+            });
+          });
+      });
+    });
+  });
 });

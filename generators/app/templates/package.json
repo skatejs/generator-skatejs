@@ -1,7 +1,5 @@
 {
-  "name": "<%= initialComponentName %>",
   "version": "1.0.0",
-  "description": "<%= projectDescription %>",
   "engines": {
     "node": ">=6.7.0"
   },
@@ -12,6 +10,5 @@
     "lint": "eslint src test",
     "test": "karma start",
     "test:ci": "karma start --single-run"
-  },
-  "author": "<%= authorName %> <<%= authorEmail %>>"
+  }
 }
