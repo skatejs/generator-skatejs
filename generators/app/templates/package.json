@@ -1,0 +1,17 @@
+{
+  "name": "<%= initialComponentName %>",
+  "version": "1.0.0",
+  "description": "<%= projectDescription %>",
+  "engines": {
+    "node": ">=6.7.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config webpack/development.js",
+    "build": "webpack --config webpack/production.js -p",
+    "build:stats": "webpack --config webpack/development.js --json | webpack-bundle-size-analyzer",
+    "lint": "eslint src test",
+    "test": "karma start",
+    "test:ci": "karma start --single-run"
+  },
+  "author": "<%= authorName %> <<%= authorEmail %>>"
+}

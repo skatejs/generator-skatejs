@@ -1,0 +1,8 @@
+# Dependencies
+node_modules/
+
+# Output
+dist/
+
+# Documentation
+docs/
