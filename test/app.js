@@ -7,12 +7,26 @@ describe('generator-skatejs:app', function () {
   describe('creating the initial component', function() {
     it('creates a component with the correct name', function() {
       return helpers.run(path.join(__dirname, '../generators/app'))
-        .withPrompts({ initialComponentName: 'x-foo' })
+        .withPrompts({ userProvidedComponentName: 'x-foo' })
         .toPromise()
         .then(function() {
-          // Make sure that the initial component was created
           assert.file('src/components/x-foo/component.js');
           assert.file('src/components/x-foo/styles.scss');
+        });
+    });
+
+    it('can be given a component name as an argument', function() {
+      return helpers.run(path.join(__dirname, '../generators/app'))
+        .withArguments([ 'my-cool-component' ])
+        .toPromise()
+        .then(function() {
+          assert.file('src/components/my-cool-component/component.js');
+          assert.file('src/components/my-cool-component/styles.scss');
+
+          assert.jsonFileContent('package.json', {
+            name: 'my-cool-component',
+            description: '`my-cool-component` custom element'
+          });
         });
     });
 
@@ -33,7 +47,7 @@ describe('generator-skatejs:app', function () {
     describe('setting the package name', function() {
       it('sets the package name the same as the initial component', function() {
         return helpers.run(path.join(__dirname, '../generators/app'))
-          .withPrompts({ initialComponentName: 'foo-bar-baz' })
+          .withPrompts({ userProvidedComponentName: 'foo-bar-baz' })
           .toPromise()
           .then(function() {
             assert.jsonFileContent('package.json', {
@@ -45,7 +59,7 @@ describe('generator-skatejs:app', function () {
 
     it('generates default description based on the component name', function() {
       return helpers.run(path.join(__dirname, '../generators/app'))
-        .withPrompts({ initialComponentName: 'foo-bar-baz' })
+        .withPrompts({ userProvidedComponentName: 'foo-bar-baz' })
         .toPromise()
         .then(function() {
           assert.jsonFileContent('package.json', {
@@ -58,7 +72,6 @@ describe('generator-skatejs:app', function () {
       it('sets the name correctly if present', function() {
         return helpers.run(path.join(__dirname, '../generators/app'))
           .withPrompts({
-            initialComponentName: 'foo-bar-baz',
             authorName: 'MeowMeow FuzzyFace'
           })
           .toPromise()
@@ -74,14 +87,13 @@ describe('generator-skatejs:app', function () {
       it('sets the email correctly if present', function() {
         return helpers.run(path.join(__dirname, '../generators/app'))
           .withPrompts({
-            initialComponentName: 'foo-bar-baz',
-            authorEmail: 'meowmeow@lapd.gov'
+            authorEmail: 'loosecannon@lapd.gov'
           })
           .toPromise()
           .then(function() {
             assert.jsonFileContent('package.json', {
               author: {
-                email: 'meowmeow@lapd.gov'
+                email: 'loosecannon@lapd.gov'
               }
             });
           });

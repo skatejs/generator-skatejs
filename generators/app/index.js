@@ -7,8 +7,10 @@ const _ = require('lodash');
 const sortPackageJson = require('sort-package-json');
 
 module.exports = class extends Generator {
-  initializing() {
-    this.props = {};
+  initializing(initialComponentName) {
+    this.props = {
+      initialComponentName
+    };
   }
 
   prompting() {
@@ -17,47 +19,56 @@ module.exports = class extends Generator {
       'Welcome to the tremendous ' + chalk.red('generator-skatejs') + ' generator!'
     ));
 
-    let defaultAppName;
+    let initialComponentNamePrompt = [];
+    if (!this.props.initialComponentName) {
+      let defaultAppName;
 
-    if (this.appname.indexOf('-') === -1) {
-      defaultAppName = `x-${this.appname}`;
-    } else {
-      defaultAppName = this.appname;
-    }
+      if (this.appname.indexOf('-') === -1) {
+        defaultAppName = `x-${this.appname}`;
+      } else {
+        defaultAppName = this.appname;
+      }
 
-    return this.prompt([
-      {
+      initialComponentNamePrompt.push({
         type: 'input',
-        name: 'initialComponentName',
+        name: 'userProvidedComponentName',
         message: 'What should we call the main component?',
         default: defaultAppName
-      }
-    ])
-    .then(({ initialComponentName }) => {
-      this.props.initialComponentName = initialComponentName;
+      });
+    }
 
-      return this.prompt([
-        {
-          type: 'input',
-          name: 'projectDescription',
-          message: 'How would you describe this project?',
-          default: `\`${initialComponentName}\` custom element`
-        },
-        {
-          type: 'input',
-          name: 'authorName',
-          message: 'What should we call you?'
-        },
-        {
-          type: 'input',
-          name: 'authorEmail',
-          message: 'What is your email address?'
+    return this.prompt(initialComponentNamePrompt)
+      .then(({ userProvidedComponentName }) => {
+        if (userProvidedComponentName) {
+          this.props = _.merge(this.props, {
+            initialComponentName: userProvidedComponentName
+          });
         }
-      ]);
-    })
-    .then((props) => {
-      this.props = _.merge(this.props, props);
-    });
+
+        const { initialComponentName } = this.props;
+
+        return this.prompt([
+          {
+            type: 'input',
+            name: 'projectDescription',
+            message: 'How would you describe this project?',
+            default: `\`${initialComponentName}\` custom element`
+          },
+          {
+            type: 'input',
+            name: 'authorName',
+            message: 'What should we call you?'
+          },
+          {
+            type: 'input',
+            name: 'authorEmail',
+            message: 'What is your email address?'
+          }
+        ]);
+      })
+      .then((props) => {
+        this.props = _.merge(this.props, props);
+      });
   }
 
   default() {
