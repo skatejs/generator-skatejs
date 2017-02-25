@@ -29,6 +29,22 @@ describe('generator-skatejs:component', function () {
   });
 
   describe('validating the component name', function() {
+    it('throws an error if no name is provided', function() {
+      let caughtError = false;
+
+      return helpers.run(path.join(__dirname, '../generators/component'))
+        .toPromise()
+        .catch(function({ message }) {
+          // Make sure that the error has the right messaging
+          assert.equal(message, 'A component name must be provided');
+          caughtError = true;
+        })
+        .then(function() {
+          // We want to make sure that an error was actually thrown
+          assert(caughtError, 'The generator threw an error');
+        });
+    });
+
     it('prevents creating components without a hyphen', function() {
       let caughtError = false;
 
@@ -37,7 +53,7 @@ describe('generator-skatejs:component', function () {
         .toPromise()
         .catch(function({ message }) {
           // Make sure that the error has the right messaging
-          assert.equal(message, '`foo` is not a valid component name');
+          assert.equal(message, "The component name must include a hyphen, was 'foo'");
           caughtError = true;
         })
         .then(function() {

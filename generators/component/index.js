@@ -28,8 +28,12 @@ module.exports = class extends Generator {
       }
 
       componentName = this.props.componentName;
+      if (!componentName) {
+        throw new Error('A component name must be provided');
+      }
+
       if (!componentName.includes('-')) {
-        throw new Error(`\`${componentName}\` is not a valid component name`);
+        throw new Error(`The component name must include a hyphen, was '${componentName}'`);
       }
     });
   }

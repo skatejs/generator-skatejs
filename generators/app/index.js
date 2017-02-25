@@ -8,9 +8,13 @@ const sortPackageJson = require('sort-package-json');
 
 module.exports = class extends Generator {
   initializing(initialComponentName) {
+    // Hold the current properties
     this.props = {
       initialComponentName
     };
+
+    // Store an in-memory version of the project's `package.json`
+    this.pkg = this.fs.readJSON(this.destinationPath('package.json')) || {};
   }
 
   prompting() {
@@ -21,19 +25,11 @@ module.exports = class extends Generator {
 
     let initialComponentNamePrompt = [];
     if (!this.props.initialComponentName) {
-      let defaultAppName;
-
-      if (this.appname.indexOf('-') === -1) {
-        defaultAppName = `x-${this.appname}`;
-      } else {
-        defaultAppName = this.appname;
-      }
-
       initialComponentNamePrompt.push({
         type: 'input',
         name: 'userProvidedComponentName',
         message: 'What should we call the main component?',
-        default: defaultAppName
+        default: this.pkg.name
       });
     }
 
@@ -46,25 +42,35 @@ module.exports = class extends Generator {
         }
 
         const { initialComponentName } = this.props;
+        const additionalPrompts = [];
 
-        return this.prompt([
-          {
+        // Only prompt for a package description if one does not already exist
+        if (!this.pkg.description) {
+          additionalPrompts.push({
             type: 'input',
             name: 'projectDescription',
             message: 'How would you describe this project?',
             default: `\`${initialComponentName}\` custom element`
-          },
-          {
-            type: 'input',
-            name: 'authorName',
-            message: 'What should we call you?'
-          },
-          {
-            type: 'input',
-            name: 'authorEmail',
-            message: 'What is your email address?'
-          }
-        ]);
+          });
+        }
+
+        // Only prompt for a author information if it is not defined
+        if (!this.pkg.author) {
+          additionalPrompts.push(
+            {
+              type: 'input',
+              name: 'authorName',
+              message: 'What should we call you?'
+            },
+            {
+              type: 'input',
+              name: 'authorEmail',
+              message: 'What is your email address?'
+            }
+          );
+        }
+
+        return this.prompt(additionalPrompts);
       })
       .then((props) => {
         this.props = _.merge(this.props, props);
@@ -116,22 +122,24 @@ module.exports = class extends Generator {
   }
 
   _generatePackageJson() {
-    let pkg = require(this.templatePath('package.json'));
-    pkg = _.merge(pkg, {
+    const templatePackage  = require(this.templatePath('package.json'));
+    const basePackage = {
       name: this.props.initialComponentName,
       description: this.props.projectDescription,
-      author: {}
-    });
+      author: {
+        name: this.props.authorName,
+        email: this.props.authorEmail
+      }
+    };
 
-    if (this.props.authorName) {
-      pkg.author.name = this.props.authorName;
-    }
+    // this.pkg <- answers given just now <- existing files <- file in template
+    this.pkg = _.merge(basePackage, this.pkg, templatePackage);
 
-    if (this.props.authorEmail) {
-      pkg.author.email = this.props.authorEmail;
-    }
+    // Sort the keys, so that the merged files doesn't look weird
+    this.pkg = sortPackageJson(this.pkg);
 
-    this.fs.writeJSON(this.destinationPath('package.json'), sortPackageJson(pkg));
+    // Write the file back out to disk
+    this.fs.writeJSON(this.destinationPath('package.json'), this.pkg);
   }
 
   install() {
