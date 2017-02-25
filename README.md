@@ -1,27 +1,37 @@
-# generator-skatejs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-skatejs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 > Create Skate.js components with Webpack
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-skatejs using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-skatejs using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/) version 6 or higher).
 
 ```bash
-npm install -g yo
-npm install -g generator-skatejs
+npm install -g yo generator-skatejs
 ```
 
-Then generate your new project:
+## Generating a new project
+
+To generate a new project:
 
 ```bash
+mkdir my-cool-component
+cd my-cool-component
 yo skatejs
 ```
 
-## Getting To Know Yeoman
+This will walk you through any required configuration.
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+## Adding more components to an existing project
+
+Since the practice of composing multiple components together is so common, this generator also allows you to add new components to an existing project.
+
+```bash
+yo skatejs:component my-second-component
+```
+
+This will create a new component, just like the first one.
+
+**NOTE**: Currently, you have to import and define additional components manually in `src/index.js`.
 
 ## License
 
@@ -32,5 +42,3 @@ MIT © [Alex LaFroscia](alexlafroscia.com)
 [npm-url]: https://npmjs.org/package/generator-skatejs
 [travis-image]: https://travis-ci.org/alexlafroscia/generator-skatejs.svg?branch=master
 [travis-url]: https://travis-ci.org/alexlafroscia/generator-skatejs
-[daviddm-image]: https://david-dm.org/alexlafroscia/generator-skatejs.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/alexlafroscia/generator-skatejs

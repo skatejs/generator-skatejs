@@ -101,6 +101,7 @@ module.exports = class extends Generator {
     // Webpack configuration
     this._moveTemplateToProject('webpack/development.js');
     this._moveTemplateToProject('webpack/production.js');
+    this._moveToProject('webpack/.eslintrc.js');
 
     // Demo page
     this._moveTemplateToProject('demo/index.html');
