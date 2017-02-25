@@ -3,10 +3,12 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-skatejs using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/) version 6 or higher).
+Before you can install [`yeoman`][yeoman] and this generator, make sure you have Node.js 6.7.0 or better installed, as well as the [`yarn`][yarn] package manager.
+
+With this complete, you can install the command line utilities that you need:
 
 ```bash
-npm install -g yo generator-skatejs
+yarn global add yo generator-skatejs
 ```
 
 ## Generating a new project
@@ -42,3 +44,5 @@ MIT © [Alex LaFroscia](alexlafroscia.com)
 [npm-url]: https://npmjs.org/package/generator-skatejs
 [travis-image]: https://travis-ci.org/alexlafroscia/generator-skatejs.svg?branch=master
 [travis-url]: https://travis-ci.org/alexlafroscia/generator-skatejs
+[yeoman]: http://yeoman.io/
+[yarn]: https://yarnpkg.com
