@@ -22,6 +22,23 @@ This will start up a development server that does a few things for you:
 
 Note that you'll need to open your browser to `localhost:8080/webpack-dev-server` to get the live-reload capabilities.
 
+## Testing
+
+[Karma][karma] will build your source files and tests together using Webpack and run them in the browser for you. Two commands are provided:
+
+```bash
+yarn test
+```
+
+This runs the tests in a "watched" mode, where the browser will be refreshed when files change and the tests will be re-run automatically.
+
+```bash
+yarn test:ci
+```
+
+This just runs through the tests one time, which is idea for Continuous Integration setups.
+
+
 ## Building production assets
 
 To build a production-ready version of the assets, use:
@@ -49,3 +66,4 @@ but it's even more useful when [run in your editor][eslint-integrations].
 
 [eslint]: http://eslint.org/
 [eslint-integrations]: http://eslint.org/docs/user-guide/integrations
+[karma]: http://karma-runner.github.io/

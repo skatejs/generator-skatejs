@@ -51,5 +51,11 @@ module.exports = class extends Generator {
       this.templatePath('component/styles.scss'),
       this.destinationPath(`src/components/${componentName}/styles.scss`)
     );
+
+    this.fs.copyTpl(
+      this.templatePath('test/component/component-test.js'),
+      this.destinationPath(`test/components/${componentName}-test.js`),
+      this.props
+    );
   }
 }

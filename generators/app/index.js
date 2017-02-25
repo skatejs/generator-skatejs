@@ -101,10 +101,15 @@ module.exports = class extends Generator {
     // Webpack configuration
     this._moveTemplateToProject('webpack/development.js');
     this._moveTemplateToProject('webpack/production.js');
+    this._moveTemplateToProject('webpack/test.js');
     this._moveToProject('webpack/.eslintrc.js');
 
     // Demo page
     this._moveTemplateToProject('demo/index.html');
+
+    // Set files
+    this._moveToProject('test');
+    this._moveToProject('karma.conf.js');
   }
 
   _moveToProject(filePath) {
@@ -156,9 +161,16 @@ module.exports = class extends Generator {
       'babel-loader',
       'babel-plugin-transform-react-jsx',
       'babel-preset-es2015',
+      'bore',
+      'chai',
       'esdoc',
       'eslint',
       'eslint-plugin-import',
+      'karma',
+      'karma-chrome-launcher',
+      'karma-mocha',
+      'karma-webpack',
+      'mocha',
       'node-sass',
       'raw-loader',
       'sass-loader',

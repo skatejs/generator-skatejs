@@ -74,4 +74,16 @@ describe('generator-skatejs:component', function () {
         });
     });
   });
+
+  describe('generating a test file', function() {
+    it('makes a `describe` block with the right name', function() {
+      return helpers.run(path.join(__dirname, '../generators/component'))
+        .withPrompts({ componentName: 'x-foo' })
+        .toPromise()
+        .then(function() {
+          assert.file('test/components/x-foo-test.js');
+          assert.fileContent('test/components/x-foo-test.js', "describe('x-foo component', function() {");
+        });
+    });
+  });
 });
