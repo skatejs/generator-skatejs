@@ -3,7 +3,7 @@ import { h, mount } from 'bore';
 
 describe('<%= componentName %> component', function() {
   it('renders', function() {
-    return mount(<x-foo></x-foo>).wait((wrapper) => {
+    return mount(<<%= componentName %>></<%= componentName %>>).wait((wrapper) => {
       const { node: p } = wrapper.one('p');
 
       expect(p.innerHTML).to.equal('Hello, world! I am <%= componentName %>!');

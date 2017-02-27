@@ -107,8 +107,9 @@ module.exports = class extends Generator {
     // Demo page
     this._moveTemplateToProject('demo/index.html');
 
-    // Set files
+    // Test files
     this._moveToProject('test');
+    this._moveToProject('test/.eslintrc.json');
     this._moveToProject('karma.conf.js');
   }
 
