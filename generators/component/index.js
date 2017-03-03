@@ -1,5 +1,9 @@
 'use strict';
+
 const Generator = require('yeoman-generator');
+
+const classify = require('../../lib/classify');
+const importComponentTransform = require('../../transforms/import-component');
 
 module.exports = class extends Generator {
   initializing(componentName) {
@@ -35,15 +39,26 @@ module.exports = class extends Generator {
       if (!componentName.includes('-')) {
         throw new Error(`The component name must include a hyphen, was '${componentName}'`);
       }
+
+      this.props.className = classify(this.props.componentName);
     });
   }
 
   writing() {
-    const { componentName } = this.props;
+    const { componentName, className } = this.props;
+    const componentDestinationPath = `src/components/${componentName}/component.js`;
+    const indexFilePath = this.destinationPath('src/index.js');
+
+    if (!this.fs.exists(indexFilePath)) {
+      this.fs.copy(
+        this.templatePath('src/index.js'),
+        indexFilePath
+      );
+    }
 
     this.fs.copyTpl(
       this.templatePath('component/component.js'),
-      this.destinationPath(`src/components/${componentName}/component.js`),
+      this.destinationPath(componentDestinationPath),
       this.props
     );
 
@@ -57,5 +72,11 @@ module.exports = class extends Generator {
       this.destinationPath(`test/components/${componentName}-test.js`),
       this.props
     );
+
+    // Import the new component
+    const originalIndexSource = this.fs.read(indexFilePath);
+    const relativeDestinationPath = componentDestinationPath.replace('src/', './');
+    const modifiedIndexSource = importComponentTransform(originalIndexSource, className, relativeDestinationPath);
+    this.fs.write(indexFilePath, modifiedIndexSource);
   }
 }

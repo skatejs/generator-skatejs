@@ -95,7 +95,6 @@ module.exports = class extends Generator {
     this._moveToProject('.esdoc.json');
 
     // Core src files
-    this._moveTemplateToProject('src/index.js');
     this._moveToProject('src/util/style.js');
 
     // Webpack configuration

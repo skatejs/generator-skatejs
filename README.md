@@ -1,4 +1,5 @@
 # generator-skatejs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+
 > Create Skate.js components with Webpack
 
 ## Installation
@@ -31,9 +32,9 @@ Since the practice of composing multiple components together is so common, this 
 yo skatejs:component my-second-component
 ```
 
-This will create a new component, just like the first one.
+This will create a new component and test file with the same structure as the first one.
 
-**NOTE**: Currently, you have to import and define additional components manually in `src/index.js`.
+**NOTE**: The newly created component will be automatically imported for you through a codemod that modifies the `src/index.js` file.  The way that it inserts newlines is not something that I can control; you might want to verify that the file looks okay after generating a new component.
 
 ## License
 

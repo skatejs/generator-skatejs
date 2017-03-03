@@ -1,0 +1,5 @@
+// Ignore dependencies
+node_modules/
+
+// Ignore transform tests/fixtures
+transforms/__test*

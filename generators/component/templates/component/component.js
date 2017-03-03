@@ -3,7 +3,7 @@ import css from './styles.scss';
 
 const { Component, h } = skate;
 
-export default class extends Component {
+export default class <%= className %> extends Component {
   /**
    * @property {string} is defines the component as <%= componentName %>
    */

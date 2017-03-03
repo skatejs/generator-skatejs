@@ -7,7 +7,7 @@ const fs = require('fs-extra');
 describe('generator-skatejs:app', function () {
   describe('creating the initial component', function() {
     it('creates a component with the correct name', function() {
-      return helpers.run(path.join(__dirname, '../generators/app'))
+      return helpers.run(path.join(__dirname, '../../generators/app'))
         .withPrompts({ userProvidedComponentName: 'x-foo' })
         .toPromise()
         .then(function() {
@@ -17,7 +17,7 @@ describe('generator-skatejs:app', function () {
     });
 
     it('can be given a component name as an argument', function() {
-      return helpers.run(path.join(__dirname, '../generators/app'))
+      return helpers.run(path.join(__dirname, '../../generators/app'))
         .withArguments([ 'my-cool-component' ])
         .toPromise()
         .then(function() {
@@ -35,7 +35,7 @@ describe('generator-skatejs:app', function () {
   describe('generating the `package.json`', function() {
     describe('setting the package name', function() {
       it('sets the package name the same as the initial component', function() {
-        return helpers.run(path.join(__dirname, '../generators/app'))
+        return helpers.run(path.join(__dirname, '../../generators/app'))
           .withPrompts({ userProvidedComponentName: 'foo-bar-baz' })
           .toPromise()
           .then(function() {
@@ -47,7 +47,7 @@ describe('generator-skatejs:app', function () {
     });
 
     it('generates default description based on the component name', function() {
-      return helpers.run(path.join(__dirname, '../generators/app'))
+      return helpers.run(path.join(__dirname, '../../generators/app'))
         .withPrompts({ userProvidedComponentName: 'foo-bar-baz' })
         .toPromise()
         .then(function() {
@@ -59,7 +59,7 @@ describe('generator-skatejs:app', function () {
 
     describe('the `author` field', function() {
       it('sets the name correctly if present', function() {
-        return helpers.run(path.join(__dirname, '../generators/app'))
+        return helpers.run(path.join(__dirname, '../../generators/app'))
           .withPrompts({
             userProvidedComponentName: 'x-foo',
             authorName: 'MeowMeow FuzzyFace'
@@ -75,7 +75,7 @@ describe('generator-skatejs:app', function () {
       });
 
       it('sets the email correctly if present', function() {
-        return helpers.run(path.join(__dirname, '../generators/app'))
+        return helpers.run(path.join(__dirname, '../../generators/app'))
           .withPrompts({
             userProvidedComponentName: 'x-foo',
             authorEmail: 'loosecannon@lapd.gov'
@@ -94,7 +94,7 @@ describe('generator-skatejs:app', function () {
     describe('integrating with an existing `package.json`', function() {
       describe('grabbing the default name', function() {
         it('does nothing if the name is empty', function() {
-          return helpers.run(path.join(__dirname, '../generators/app'))
+          return helpers.run(path.join(__dirname, '../../generators/app'))
             .inTmpDir(function(dir) {
               const tmpPkg = path.join(dir, 'package.json');
 
@@ -114,7 +114,7 @@ describe('generator-skatejs:app', function () {
         });
 
         it('uses the existing name if present', function() {
-          return helpers.run(path.join(__dirname, '../generators/app'))
+          return helpers.run(path.join(__dirname, '../../generators/app'))
             .inTmpDir(function(dir) {
               fs.writeJsonSync(path.join(dir, 'package.json'), {
                 name: 'x-foo-bar'
@@ -133,7 +133,7 @@ describe('generator-skatejs:app', function () {
 
       describe('keeping existing data', function() {
         it('does not override the existing name', function() {
-          return helpers.run(path.join(__dirname, '../generators/app'))
+          return helpers.run(path.join(__dirname, '../../generators/app'))
             .inTmpDir(function(dir) {
               fs.writeJsonSync(path.join(dir, 'package.json'), {
                 name: 'existing-package-name'
@@ -151,7 +151,7 @@ describe('generator-skatejs:app', function () {
         });
 
         it('does not override the existing description', function() {
-          return helpers.run(path.join(__dirname, '../generators/app'))
+          return helpers.run(path.join(__dirname, '../../generators/app'))
             .inTmpDir(function(dir) {
               fs.writeJsonSync(path.join(dir, 'package.json'), {
                 description: 'original description'
@@ -170,7 +170,7 @@ describe('generator-skatejs:app', function () {
         });
 
         it('does not override the existing author', function() {
-          return helpers.run(path.join(__dirname, '../generators/app'))
+          return helpers.run(path.join(__dirname, '../../generators/app'))
             .inTmpDir(function(dir) {
               fs.writeJsonSync(path.join(dir, 'package.json'), {
                 author: 'original author'
