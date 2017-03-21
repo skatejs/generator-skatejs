@@ -34,31 +34,14 @@
     "eslint": "^3.1.1",
     "eslint-plugin-ava": "^4.2.0",
     "fs-extra": "^2.0.0",
-    "gulp": "^3.9.0",
-    "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-istanbul": "^1.0.0",
-    "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-mocha": "^3.0.1",
-    "gulp-nsp": "^2.1.0",
-    "gulp-plumber": "^1.0.0",
+    "nyc": "^10.1.2",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
   },
   "repository": "alexlafroscia/generator-skatejs",
   "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "eslint . && ava && gulp",
-    "test:generators": "gulp",
-    "test:transforms": "ava"
+    "test": "eslint . && nyc ava",
+    "test:generators": "ava test/generators"
   },
-  "license": "MIT",
-  "ava": {
-    "files": [
-      "transforms/tests/*.js"
-    ],
-    "source": [
-      "transforms/**/*.js",
-      "!transforms/tests/**/*.js"
-    ]
-  }
+  "license": "MIT"
 }

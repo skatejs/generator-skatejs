@@ -1,6 +1,6 @@
 import test from 'ava';
 import { stripIndent } from 'common-tags';
-import transform from '../import-component';
+import transform from '../../transforms/import-component';
 
 test('adding a module to an empty file', (t) => {
   const output = transform(stripIndent`

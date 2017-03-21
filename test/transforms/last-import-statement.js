@@ -1,5 +1,5 @@
 import test from 'ava';
-import { lastImportStatement } from '../import-component';
+import { lastImportStatement } from '../../transforms/import-component';
 import { parse } from 'recast';
 
 test('it returns nothing when there are no import statements', (t) => {

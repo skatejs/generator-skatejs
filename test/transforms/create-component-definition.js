@@ -1,5 +1,5 @@
 import test from 'ava';
-import { createComponentDefinition } from '../import-component';
+import { createComponentDefinition } from '../../transforms/import-component';
 
 test('it can create an import statement', (t) => {
   const def = createComponentDefinition('Foo');
