@@ -165,6 +165,15 @@ test.serial('does not override the existing author', async () => {
   });
 });
 
+test.serial('it generates a demo page', async () => {
+  await helpers.run(path.join(__dirname, '../../generators/app'))
+    .withArguments([ 'x-foo' ])
+    .toPromise();
+
+  assert.fileContent('demo/index.html', '/dist/x-foo.bundle.js');
+  assert.fileContent('demo/index.html', '<x-foo></x-foo>');
+});
+
 async function checkForFileMacro(t, fileName) {
   await helpers.run(path.join(__dirname, '../../generators/app'))
     .withPrompts({ userProvidedComponentName: 'x-foo' })

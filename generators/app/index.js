@@ -85,6 +85,11 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../component'), {
       arguments: [ initialComponentName ]
     });
+
+    // Generate a default demo page
+    this.composeWith(require.resolve('../demo'), {
+      arguments: [ 'index', initialComponentName ]
+    });
   }
 
   writing() {
@@ -103,9 +108,6 @@ module.exports = class extends Generator {
     this._moveTemplateToProject('webpack/production.js');
     this._moveTemplateToProject('webpack/test.js');
     this._moveToProject('webpack/.eslintrc.js');
-
-    // Demo page
-    this._moveTemplateToProject('demo/index.html');
 
     // Test files
     this._moveToProject('test');
