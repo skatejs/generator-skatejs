@@ -34,7 +34,6 @@
     "eslint": "^3.1.1",
     "fs-extra": "^2.0.0",
     "gulp": "^3.9.0",
-    "gulp-eslint": "^3.0.1",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^1.0.0",
     "gulp-line-ending-corrector": "^1.0.1",
@@ -47,7 +46,7 @@
   "repository": "alexlafroscia/generator-skatejs",
   "scripts": {
     "prepublish": "gulp prepublish",
-    "test": "ava && gulp",
+    "test": "eslint . && ava && gulp",
     "test:generators": "gulp",
     "test:transforms": "ava"
   },
