@@ -165,19 +165,19 @@ test.serial('does not override the existing author', async () => {
   });
 });
 
-function checkForFile(name) {
-  test.serial(`generates the dotfile: ${name}`, async () => {
-    await helpers.run(path.join(__dirname, '../../generators/app'))
-      .withPrompts({ userProvidedComponentName: 'x-foo' })
-      .toPromise();
+async function checkForFileMacro(t, fileName) {
+  await helpers.run(path.join(__dirname, '../../generators/app'))
+    .withPrompts({ userProvidedComponentName: 'x-foo' })
+    .toPromise();
 
-    assert.file(name);
-  });
+  assert.file(fileName);
 }
 
-checkForFile('.gitignore');
-checkForFile('.eslintrc.js');
-checkForFile('.esdoc.json');
-checkForFile('karma.conf.js');
-checkForFile('webpack/.eslintrc.js');
-checkForFile('test/.eslintrc.json');
+checkForFileMacro.title = (provided, input) => `generates the dotfile: ${input}`;
+
+test(checkForFileMacro, '.gitignore');
+test(checkForFileMacro, '.eslintrc.js');
+test(checkForFileMacro, '.esdoc.json');
+test(checkForFileMacro, 'karma.conf.js');
+test(checkForFileMacro, 'webpack/.eslintrc.js');
+test(checkForFileMacro, 'test/.eslintrc.json');
