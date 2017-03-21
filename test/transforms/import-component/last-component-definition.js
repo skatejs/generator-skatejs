@@ -1,5 +1,5 @@
 import test from 'ava';
-import { lastComponentDefinition } from '../../transforms/import-component';
+import { lastComponentDefinition } from '../../../transforms/import-component';
 import { parse } from 'recast';
 
 test('it returns nothing when there are no component definitions', (t) => {
