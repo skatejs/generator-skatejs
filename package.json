@@ -40,6 +40,7 @@
   },
   "repository": "alexlafroscia/generator-skatejs",
   "scripts": {
+    "report": "nyc report --reporter=html && open coverage/index.html",
     "test": "eslint . && nyc ava",
     "test:generators": "ava test/generators"
   },
