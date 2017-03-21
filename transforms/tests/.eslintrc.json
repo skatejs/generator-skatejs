@@ -1,5 +1,9 @@
 {
   "parserOptions": {
     "sourceType": "module"
-  }
+  },
+  "extends": "plugin:ava/recommended",
+  "plugins": [
+    "ava"
+  ]
 }
