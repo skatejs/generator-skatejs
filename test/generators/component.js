@@ -97,7 +97,7 @@ test.serial('generates the index file when one does not exist', async () => {
 test.serial('adds the new component to an existing index file', async () => {
   await helpers.run(path.join(__dirname, '../../generators/component'))
     .inTmpDir((dir) => {
-      fs.copySync(path.join(__dirname, '../../generators/component/templates/src'), dir);
+      fs.copySync(path.join(__dirname, '../../generators/component/templates/src'), path.join(dir, 'src'));
     })
     .withPrompts({ componentName: 'x-foo' })
     .toPromise();
