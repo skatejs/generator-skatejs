@@ -1,5 +1,5 @@
 import test from 'ava';
-import { createImportStatement } from '../../../transforms/import-component';
+import createImportStatement from '../../../transforms/utils/create-import-statement';
 
 test('it can create an import statement', (t) => {
   const importStatement = createImportStatement('Foo', 'bar');

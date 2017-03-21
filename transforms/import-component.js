@@ -3,35 +3,14 @@
 const recast = require('recast');
 const { parse, types: { builders }, print } = recast;
 
-function lastImportStatement(ast) {
-  return ast.program.body
-    .filter(({ type }) => type === 'ImportDeclaration')
-    .reduce((previous, nextImport) => nextImport, undefined);
-}
+const lastImportStatement = require('./utils/last-import-statement');
+const createImportStatement = require('./utils/create-import-statement');
 
 function lastComponentDefinition(ast) {
   return ast.program.body
     .filter(({ type }) => type === 'ExpressionStatement')
     .filter(({ expression: { callee } }) => callee.type === 'Identifier' && callee.name === 'define')
     .reduce((previous, nextDec) => nextDec, undefined);
-}
-
-/**
- * Creates a Recast import statement
- *
- * @param {string} componentName the name of the default import
- * @param {string} componentLocation the place to import the component from
- * @return {ImportDeclaration}
- */
-function createImportStatement(componentName, componentLocation) {
-  return builders.importDeclaration(
-    [
-      builders.importDefaultSpecifier(
-        builders.identifier(componentName)
-      )
-    ],
-    builders.literal(componentLocation)
-  );
 }
 
 function createComponentDefinition(componentName) {
