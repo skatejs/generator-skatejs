@@ -3,3 +3,4 @@ node_js:
   - v7
   - v6
 cache: yarn
+after_success: yarn report:coveralls

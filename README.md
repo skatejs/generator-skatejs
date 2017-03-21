@@ -1,4 +1,4 @@
-# generator-skatejs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# generator-skatejs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 > Create Skate.js components with Webpack
 
@@ -70,5 +70,7 @@ MIT © [Alex LaFroscia](alexlafroscia.com)
 [npm-url]: https://npmjs.org/package/generator-skatejs
 [travis-image]: https://travis-ci.org/alexlafroscia/generator-skatejs.svg?branch=master
 [travis-url]: https://travis-ci.org/alexlafroscia/generator-skatejs
+[coveralls-image]: https://coveralls.io/repos/github/alexlafroscia/generator-skatejs/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/alexlafroscia/generator-skatejs?branch=master
 [yeoman]: http://yeoman.io/
 [yarn]: https://yarnpkg.com
