@@ -28,36 +28,23 @@ test.serial('can be given a component name to generate', async () => {
   assert.file('src/components/x-foo/styles.scss');
 });
 
-test.serial('throws an error if no name is provided', async () => {
-  let caughtError = false;
+test.serial('throws an error if no name is provided', async (t) => {
+  const promise = helpers.run(path.join(__dirname, '../../generators/component'))
+    .toPromise();
 
-  try {
-    await helpers.run(path.join(__dirname, '../../generators/component'))
-      .toPromise();
-  } catch({ message }) {
-    // Make sure that the error has the right messaging
-    assert.equal(message, 'A component name must be provided');
-    caughtError = true;
-  }
+  const error = await t.throws(promise);
 
-  assert(caughtError, 'The generator threw an error');
+  t.is(error.message, 'A component name must be provided');
 });
 
-test.serial('prevents creating components without a hyphen', async () => {
-  let caughtError = false;
+test.serial('prevents creating components without a hyphen', async (t) => {
+  const promise = helpers.run(path.join(__dirname, '../../generators/component'))
+    .withPrompts({ componentName: 'foo' })
+    .toPromise();
 
-  try {
-    await helpers.run(path.join(__dirname, '../../generators/component'))
-      .withPrompts({ componentName: 'foo' })
-      .toPromise();
-  } catch({ message }) {
-    // Make sure that the error has the right messaging
-    assert.equal(message, "The component name must include a hyphen, was 'foo'");
-    caughtError = true;
-  }
+  const error = await t.throws(promise);
 
-  // We want to make sure that an error was actually thrown
-  assert(caughtError, 'The generator threw an error');
+  t.is(error.message, "The component name must include a hyphen, was 'foo'");
 });
 
 test.serial('registers the component with the correct name', async () => {
