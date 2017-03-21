@@ -1,5 +1,6 @@
 'use strict';
 
+const path = require('path');
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -113,8 +114,21 @@ module.exports = class extends Generator {
   }
 
   _moveToProject(filePath) {
+    let sourceFilePath = filePath;
+    const pathInfo = path.parse(filePath);
+
+    if (pathInfo.name.charAt(0) === '.') {
+      const characters = pathInfo.name.split('');
+      characters.shift();
+      sourceFilePath = characters.join('') + pathInfo.ext;
+
+      if (pathInfo.dir !== '') {
+        sourceFilePath = `${pathInfo.dir}/${sourceFilePath}`;
+      }
+    }
+
     this.fs.copy(
-      this.templatePath(filePath),
+      this.templatePath(sourceFilePath),
       this.destinationPath(filePath)
     );
   }

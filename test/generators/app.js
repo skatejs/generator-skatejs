@@ -190,4 +190,24 @@ describe('generator-skatejs:app', function () {
       });
     });
   });
+
+  describe('generating dotfiles', function() {
+    function testForFile(name) {
+      it(`generates the dotfile: ${name}`, function() {
+        return helpers.run(path.join(__dirname, '../../generators/app'))
+          .withPrompts({ userProvidedComponentName: 'x-foo' })
+          .toPromise()
+          .then(function() {
+            assert.file(name);
+          });
+      })
+    }
+
+    testForFile('.gitignore');
+    testForFile('.eslintrc.js');
+    testForFile('.esdoc.json');
+    testForFile('karma.conf.js');
+    testForFile('webpack/.eslintrc.js');
+    testForFile('test/.eslintrc.json');
+  });
 });
