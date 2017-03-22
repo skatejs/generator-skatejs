@@ -1,6 +1,6 @@
 {
   "name": "generator-skatejs",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Create Skate.js components with Webpack",
   "homepage": "https://github.com/alexlafroscia/generator-skatejs",
   "author": {
