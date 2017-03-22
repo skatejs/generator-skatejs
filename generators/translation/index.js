@@ -63,6 +63,8 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.installDependencies();
+    this.yarnInstall([
+      'object-path'
+    ], { dev: false });
   }
 }
