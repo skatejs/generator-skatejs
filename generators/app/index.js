@@ -193,7 +193,8 @@ module.exports = class extends Generator {
       'webpack',
       'webpack-bundle-size-analyzer',
       'webpack-dev-server',
-      'webpack-merge'
+      'webpack-merge',
+      'yaml-loader'
     ], { dev: true });
   }
 }
