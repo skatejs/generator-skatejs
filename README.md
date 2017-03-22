@@ -61,6 +61,53 @@ Just as with the initial page, the entire `demo/` directory is made available at
 
 **Note**: If for some reason there is a problem detecting the name of your output file, the name of the component to instantiate will be used instead.
 
+## Adding translation files
+
+Depending on your site's needs, you might need to localize your UI so that it can be translated into multiple languages. This project includes a sub-generator for creating YAML files to store your translation keys, and helper functions to render those strings.
+
+You can create a new translation locale using:
+
+```bash
+yo skatejs:translation en-US
+```
+
+where `en-US` could be any locale identifier. This identifier is used to match against the value passed into the `createTranslationHelper` function, which would presumably be the current locale.
+
+The helper that is generated can then be imported and used like so, assuming your component has a `locale` prop:
+
+```javascript
+import createTranslationHelper from '../../util/translation.js';
+
+const { Component, h, prop } = skate;
+
+export default class extends Component {
+  renderCallback({ locale }) {
+    const t = createTranslationHelper(locale);
+
+    return <p>
+      { t('key') }
+    </p>;
+  }
+}
+```
+
+You can also use objects to namespace translation strings to keep things better organized.  If you had a YAML file structure like this, for example:
+
+```yaml
+header:
+  title: My Site
+  about: About me
+```
+
+You could access those values like so:
+
+```javascript
+const t = createTranslationHelper(locale);
+
+t('header.title'); // `My Site`
+t('header.about'); // `About me`
+```
+
 ## License
 
 MIT © [Alex LaFroscia](alexlafroscia.com)
