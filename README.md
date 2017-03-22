@@ -78,15 +78,17 @@ The helper that is generated can then be imported and used like so, assuming you
 ```javascript
 import createTranslationHelper from '../../util/translation.js';
 
-const { Component, h, prop } = skate;
+const { Component, h } = skate;
 
 export default class extends Component {
   renderCallback({ locale }) {
     const t = createTranslationHelper(locale);
 
-    return <p>
-      { t('key') }
-    </p>;
+    return (
+      <p>
+        { t('key') }
+      </p>
+    );
   }
 }
 ```
