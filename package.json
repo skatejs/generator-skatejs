@@ -12,7 +12,9 @@
     "node": ">= 6.7.0"
   },
   "files": [
-    "generators"
+    "generators",
+    "lib",
+    "transforms"
   ],
   "main": "generators/index.js",
   "keywords": [
