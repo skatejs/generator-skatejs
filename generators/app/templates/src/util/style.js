@@ -1,4 +1,5 @@
-const { h } = skate;
+import { h } from 'skatejs';
+
 const $template = Symbol();
 
 /**

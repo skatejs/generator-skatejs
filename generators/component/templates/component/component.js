@@ -1,7 +1,7 @@
+import { Component, h } from 'skatejs';
+
 import style from '../../util/style.js';
 import css from './styles.scss';
-
-const { Component, h } = skate;
 
 export default class <%= className %> extends Component {
   /**

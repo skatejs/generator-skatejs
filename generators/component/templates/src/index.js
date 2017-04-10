@@ -1,1 +1,2 @@
-const { define } = skate;
+import 'skatejs-web-components';
+import { define } from 'skatejs';

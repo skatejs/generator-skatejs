@@ -31,11 +31,6 @@ module.exports = function(config) {
       [testFiles]: [ 'webpack' ]
     },
 
-    // Set custom context files to inject the additional
-    // script tags required by the bundle
-    customContextFile: 'test/static/context.html',
-    customDebugFile: 'test/static/debug.html',
-
     webpack: webpackConfig,
 
     webpackMiddleware: {

@@ -93,7 +93,7 @@ test.serial('adds the new component to an existing index file', async () => {
   assert.fileContent('src/index.js', 'import XFoo from "./components/x-foo/component.js";');
   assert.fileContent('src/index.js', 'define(XFoo);');
 
-  assert.fileContent('src/index.js', 'const { define } = skate;');
+  assert.fileContent('src/index.js', "import { define } from 'skatejs';");
 });
 
 test.serial('adds the new class to the index file', async () => {

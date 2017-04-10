@@ -167,7 +167,8 @@ module.exports = class extends Generator {
   install() {
     // Runtime Dependencies
     this.yarnInstall([
-      'skatejs'
+      'skatejs',
+      'skatejs-web-components'
     ], { dev: false });
 
     // Development Dependencies
