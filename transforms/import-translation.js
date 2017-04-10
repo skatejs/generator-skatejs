@@ -56,7 +56,7 @@ function importTranslation(source, locale, moduleLocation) {
 
   const translationMapNode = findTranslationMap(ast);
   if (!translationMapNode) {
-    return print(ast).code;
+    return print(ast, { quote: 'single' }).code;
   }
 
   const lastImport = lastImportStatement(ast);
@@ -79,7 +79,7 @@ function importTranslation(source, locale, moduleLocation) {
   const index = ast.program.body.indexOf(newTranslationDefinitionAnchor);
   ast.program.body.splice(index + 1, 0, newTranslationDefinition);
 
-  return print(ast).code;
+  return print(ast, { quote: 'single' }).code;
 }
 
 module.exports = importTranslation;

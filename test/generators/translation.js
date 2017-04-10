@@ -34,8 +34,8 @@ test.serial('it generates the translation helper if it does not exist', async ()
     .toPromise();
 
   assert.fileContent('src/util/translation.js', 'export default function createTranslationHelper');
-  assert.fileContent('src/util/translation.js', 'import enUS from "../../translations/en-US.yml";');
-  assert.fileContent('src/util/translation.js', 'translationMap.set("en-US", enUS);');
+  assert.fileContent('src/util/translation.js', "import enUS from '../../translations/en-US.yml';");
+  assert.fileContent('src/util/translation.js', "translationMap.set('en-US', enUS);");
 });
 
 test.serial('it imports new translation files to the helper without overwriting it', async () => {
@@ -44,18 +44,18 @@ test.serial('it imports new translation files to the helper without overwriting 
       const filePath = path.join(dir, 'src/util/translation.js');
       fs.ensureFileSync(filePath);
       fs.writeFileSync(filePath, `
-        import enUS from "../../translations/en-US.yml";
+        import enUS from '../../translations/en-US.yml';
 
         const translationMap = new Map();
-        translationMap.set("en-US", enUS);
+        translationMap.set('en-US', enUS);
       `);
     })
     .withArguments([ 'fr-CA' ])
     .toPromise();
 
   // Check that the old config was not removed, and that the new translation was added
-  assert.fileContent('src/util/translation.js', 'import enUS from "../../translations/en-US.yml";');
-  assert.fileContent('src/util/translation.js', 'translationMap.set("en-US", enUS);');
-  assert.fileContent('src/util/translation.js', 'import frCA from "../../translations/fr-CA.yml";');
-  assert.fileContent('src/util/translation.js', 'translationMap.set("fr-CA", frCA);');
+  assert.fileContent('src/util/translation.js', "import enUS from '../../translations/en-US.yml';");
+  assert.fileContent('src/util/translation.js', "translationMap.set('en-US', enUS);");
+  assert.fileContent('src/util/translation.js', "import frCA from '../../translations/fr-CA.yml';");
+  assert.fileContent('src/util/translation.js', "translationMap.set('fr-CA', frCA);");
 });

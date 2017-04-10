@@ -51,7 +51,7 @@ function importComponent(source, componentName, componentLocation) {
     ast.program.body.push(componentDefinition);
   }
 
-  return print(ast).code;
+  return print(ast, { quote: 'single' }).code;
 }
 
 module.exports = importComponent;

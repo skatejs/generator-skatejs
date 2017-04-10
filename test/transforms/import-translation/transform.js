@@ -8,9 +8,9 @@ test('importing the initial translation', (t) => {
   `;
   const output = transform(source, 'en-US', 'translations/en-US.yml');
   const fixture = stripIndent`
-    import enUS from "translations/en-US.yml";
+    import enUS from 'translations/en-US.yml';
     const translationMap = new Map();
-    translationMap.set("en-US", enUS);
+    translationMap.set('en-US', enUS);
   `;
 
   t.is(output, fixture);
@@ -18,17 +18,17 @@ test('importing the initial translation', (t) => {
 
 test('importing additional translations', (t) => {
   const source = stripIndent`
-    import enUS from "translations/en-US.yml";
+    import enUS from 'translations/en-US.yml';
     const translationMap = new Map();
-    translationMap.set("en-US", enUS);
+    translationMap.set('en-US', enUS);
   `;
   const output = transform(source, 'fr-CA', 'translations/fr-CA.yml');
   const fixture = stripIndent`
-    import enUS from "translations/en-US.yml";
-    import frCA from "translations/fr-CA.yml";
+    import enUS from 'translations/en-US.yml';
+    import frCA from 'translations/fr-CA.yml';
     const translationMap = new Map();
-    translationMap.set("en-US", enUS);
-    translationMap.set("fr-CA", frCA);
+    translationMap.set('en-US', enUS);
+    translationMap.set('fr-CA', frCA);
   `;
 
   t.is(output, fixture);

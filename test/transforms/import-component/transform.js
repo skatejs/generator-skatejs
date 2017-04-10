@@ -8,7 +8,7 @@ test('adding a module to an empty file', (t) => {
   `, 'MyComponent', './components/my-component/component.js');
 
   const fixture = stripIndent`
-    import MyComponent from "./components/my-component/component.js";
+    import MyComponent from './components/my-component/component.js';
     const { define } = skatejs;
     define(MyComponent);
   `;
@@ -25,7 +25,7 @@ test('adding a module to a file that already has one', (t) => {
 
   const fixture = stripIndent`
     import MyComponent from 'foo';
-    import MyOtherComponent from "./components/my-component/component.js";
+    import MyOtherComponent from './components/my-component/component.js';
     const { define } = skatejs;
     define(MyComponent);
     define(MyOtherComponent);
