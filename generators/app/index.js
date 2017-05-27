@@ -96,9 +96,10 @@ module.exports = class extends Generator {
     // Basic project structure
     this._generatePackageJson();
     this._moveTemplateToProject('README.md');
-    this._moveToProject('.gitignore');
-    this._moveToProject('.eslintrc.js');
+    this._moveToProject('.babelrc');
     this._moveToProject('.esdoc.json');
+    this._moveToProject('.eslintrc.js');
+    this._moveToProject('.gitignore');
 
     // Core src files
     this._moveToProject('src/util/style.js');
@@ -178,7 +179,7 @@ module.exports = class extends Generator {
       'babel-eslint',
       'babel-loader',
       'babel-plugin-transform-react-jsx',
-      'babel-preset-es2015',
+      'babel-preset-env',
       'bore',
       'chai',
       'esdoc',
