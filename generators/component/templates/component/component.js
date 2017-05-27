@@ -12,12 +12,14 @@ export default class <%= className %> extends Component {
   }
 
   renderCallback() {
-    return [
-      style(this, css),
-      <p class="text">
-        Hello, world! I am <%= componentName %>!
-      </p>
-    ];
+    return (
+      <div>
+        { style(this, css) }
+        <p class="text">
+          Hello, world! I am <%= componentName %>!
+        </p>
+      </div>
+    );
   }
 }
 
