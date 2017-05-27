@@ -14,8 +14,7 @@ test.serial('prompts for a component name if not given one', async () => {
   assert.file('src/components/x-foo/styles.scss');
 
   // Make sure that the file was added to the index
-  assert.fileContent('src/index.js', "import XFoo from './components/x-foo/component.js';");
-  assert.fileContent('src/index.js', 'define(XFoo);');
+  assert.fileContent('src/index.js', "import './components/x-foo/component.js';");
 });
 
 test.serial('can be given a component name to generate', async () => {
@@ -62,6 +61,7 @@ test.serial('adds a class name for the component', async () => {
     .toPromise();
 
   assert.fileContent('src/components/x-foo/component.js', /export default class XFoo extends Component/);
+  assert.fileContent('src/components/x-foo/component.js', /define\(XFoo\);/);
 });
 
 test.serial('makes a `describe` block with the right name', async () => {
@@ -90,10 +90,9 @@ test.serial('adds the new component to an existing index file', async () => {
     .toPromise();
 
   // Make sure that the file was added to the index
-  assert.fileContent('src/index.js', "import XFoo from './components/x-foo/component.js';");
-  assert.fileContent('src/index.js', 'define(XFoo);');
+  assert.fileContent('src/index.js', "import './components/x-foo/component.js';");
 
-  assert.fileContent('src/index.js', "import { define } from 'skatejs';");
+  assert.fileContent('src/index.js', "import 'skatejs-web-components';");
 });
 
 test.serial('adds the new class to the index file', async () => {
@@ -102,6 +101,5 @@ test.serial('adds the new class to the index file', async () => {
     .toPromise();
 
   // Make sure that the file was added to the index
-  assert.fileContent('src/index.js', "import XFoo from './components/x-foo/component.js';");
-  assert.fileContent('src/index.js', 'define(XFoo);');
+  assert.fileContent('src/index.js', "import './components/x-foo/component.js';");
 });

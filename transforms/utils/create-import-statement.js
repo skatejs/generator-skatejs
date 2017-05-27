@@ -9,12 +9,16 @@ const { types: { builders } } = recast;
  * @return {ImportDeclaration}
  */
 function createImportStatement(componentName, componentLocation) {
+  const imports = componentName
+    ? [
+        builders.importDefaultSpecifier(
+          builders.identifier(componentName)
+        )
+      ]
+    : [];
+
   return builders.importDeclaration(
-    [
-      builders.importDefaultSpecifier(
-        builders.identifier(componentName)
-      )
-    ],
+    imports,
     builders.literal(componentLocation)
   );
 }

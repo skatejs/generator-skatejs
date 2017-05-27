@@ -45,7 +45,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const { componentName, className } = this.props;
+    const { componentName } = this.props;
     const componentDestinationPath = `src/components/${componentName}/component.js`;
     const indexFilePath = this.destinationPath('src/index.js');
 
@@ -76,7 +76,7 @@ module.exports = class extends Generator {
     // Import the new component
     const originalIndexSource = this.fs.read(indexFilePath);
     const relativeDestinationPath = componentDestinationPath.replace('src/', './');
-    const modifiedIndexSource = importComponentTransform(originalIndexSource, className, relativeDestinationPath);
+    const modifiedIndexSource = importComponentTransform(originalIndexSource, relativeDestinationPath);
     this.fs.write(indexFilePath, modifiedIndexSource);
   }
 }
