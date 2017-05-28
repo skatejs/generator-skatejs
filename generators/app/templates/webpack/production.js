@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
 const base = require('./development');
-const webpack = require('webpack');
+const BabiliPlugin = require('babili-webpack-plugin');
 
 /**
  * Production Webpack Configuration
@@ -14,11 +14,7 @@ module.exports = merge(base, {
     filename: '<%= initialComponentName %>.bundle.min.js'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    })
+    new BabiliPlugin()
   ],
   devServer: undefined
 });

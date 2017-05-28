@@ -180,6 +180,7 @@ module.exports = class extends Generator {
       'babel-loader',
       'babel-plugin-transform-react-jsx',
       'babel-preset-env',
+      'babili-webpack-plugin',
       'bore',
       'chai',
       'esdoc',
