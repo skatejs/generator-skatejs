@@ -85,11 +85,6 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../component'), {
       arguments: [ initialComponentName ]
     });
-
-    // Generate a default demo page
-    this.composeWith(require.resolve('../demo'), {
-      arguments: [ 'index', initialComponentName ]
-    });
   }
 
   writing() {

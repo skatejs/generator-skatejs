@@ -36,31 +36,6 @@ This will create a new component and test file with the same structure as the fi
 
 **NOTE**: The newly created component will be automatically imported for you through a codemod that modifies the `src/index.js` file.  The way that it inserts newlines is not something that I can control; you might want to verify that the file looks okay after generating a new component.
 
-## Adding additional demo pages
-
-By default, a `demo/index.html` file will be generated, which imports your `webpack` output file and instantiates your initial component.  However, it's often useful to create multiple demo pages that can show off your component under other configurations, or that utilize other components.
-
-You can generate additional demo pages using
-
-```
-yo skatejs:demo __name_of_page__
-```
-
-where the new page will be created at `demo/__name_of_page__.html`.
-
-The command accepts a number of different naming conventions:
-
-```bash
-yo skatejs:demo # Be prompted for the name of the page and the component to instantiate
-yo skatejs:demo my-page some-component-name # Provide both the name of the page and the component to instantiate
-yo skatejs:demo my-page.xyz # Create a page at `demo/my-page.xyz`
-yo skatejs:demo pages/about # Create a page at `pages/about.html`
-```
-
-Just as with the initial page, the entire `demo/` directory is made available at the root of the development server when you run `yarn start`; this means that if you run `yo skatejs:demo my-page`, you can visit that page at `localhost:8080/my-page.html`.
-
-**Note**: If for some reason there is a problem detecting the name of your output file, the name of the component to instantiate will be used instead.
-
 ## Adding translation files
 
 Depending on your site's needs, you might need to localize your UI so that it can be translated into multiple languages. This project includes a sub-generator for creating YAML files to store your translation keys, and helper functions to render those strings.

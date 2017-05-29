@@ -8,20 +8,6 @@ To work on your component, first get your dependencies installed
 yarn install
 ```
 
-You can run a development server locally using `webpack-dev-server` using:
-
-```bash
-yarn start
-```
-
-This will start up a development server that does a few things for you:
-
-- Watch your source files and re-run Webpack whenever files change
-- Serves up the contents of `demo/`, which is configured to link to the version of your component that Webpack is producing
-- Automatically reload the page when the component is re-built
-
-Note that you'll need to open your browser to `localhost:8080/webpack-dev-server` to get the live-reload capabilities.
-
 ## Testing
 
 [Karma][karma] will build your source files and tests together using Webpack and run them in the browser for you. Two commands are provided:
