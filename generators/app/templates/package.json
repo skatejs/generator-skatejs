@@ -8,6 +8,8 @@
     "build:stats": "webpack --config webpack/development.js --json | webpack-bundle-size-analyzer",
     "lint": "eslint src test",
     "test": "karma start",
-    "test:ci": "karma start --single-run"
+    "test:ci": "karma start --single-run",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }

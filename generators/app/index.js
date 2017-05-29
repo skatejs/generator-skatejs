@@ -96,6 +96,10 @@ module.exports = class extends Generator {
     this._moveToProject('.eslintrc.js');
     this._moveToProject('.gitignore');
 
+    // Storybook
+    this._moveToProject('.storybook');
+    this._moveToProject('stories');
+
     // Core src files
     this._moveToProject('src/util/style.js');
 
@@ -170,6 +174,8 @@ module.exports = class extends Generator {
 
     // Development Dependencies
     this.yarnInstall([
+      '@skatejs/val',
+      '@storybook/react',
       'babel-core',
       'babel-eslint',
       'babel-loader',
@@ -188,6 +194,8 @@ module.exports = class extends Generator {
       'mocha',
       'node-sass',
       'raw-loader',
+      'react',
+      'react-dom',
       'sass-loader',
       'webpack',
       'webpack-bundle-size-analyzer',

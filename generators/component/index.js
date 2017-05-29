@@ -62,6 +62,12 @@ module.exports = class extends Generator {
       this.props
     );
 
+    this.fs.copyTpl(
+      this.templatePath('component/story.js'),
+      this.destinationPath(`src/components/${componentName}/story.js`),
+      this.props
+    );
+
     this.fs.copy(
       this.templatePath('component/styles.scss'),
       this.destinationPath(`src/components/${componentName}/styles.scss`)
