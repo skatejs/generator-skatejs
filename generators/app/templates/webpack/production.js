@@ -15,6 +15,5 @@ module.exports = merge(base, {
   },
   plugins: [
     new BabiliPlugin()
-  ],
-  devServer: undefined
+  ]
 });

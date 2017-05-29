@@ -29,9 +29,5 @@ module.exports = {
         ]
       }
     ]
-  },
-  devServer: {
-    contentBase: resolve(__dirname, '../demo'),
-    publicPath: '/dist/'
   }
 };

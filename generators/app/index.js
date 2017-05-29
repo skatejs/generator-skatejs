@@ -191,7 +191,6 @@ module.exports = class extends Generator {
       'sass-loader',
       'webpack',
       'webpack-bundle-size-analyzer',
-      'webpack-dev-server',
       'webpack-merge',
       'yaml-loader'
     ], { dev: true });

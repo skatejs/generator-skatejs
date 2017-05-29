@@ -35,7 +35,7 @@ yarn build
 
 This runs the exact same process as during development, just two small differences:
 
-- The file is run through Uglify to compress it
+- The file is run through Babili to compress it
 - The file is given an extension of `.min.js` instead of `.js`
 
 This file can then be found at `dist/<%= initialComponentName %>.bundle.min.js`.
