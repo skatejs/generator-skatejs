@@ -8,6 +8,18 @@ To work on your component, first get your dependencies installed
 yarn install
 ```
 
+## Development
+
+To create an environment for testing your components, [Storybook][storybook] is set up by default. While the project is intended for React development, it works pretty well with Skate.
+
+To start Storybook, run:
+
+```bash
+yarn storybook
+```
+
+And you'll be up-and-running with a Storybook dev server. See their documentation for more information about the kinds of things you can accomplish with Storybook.
+
 ## Testing
 
 [Karma][karma] will build your source files and tests together using Webpack and run them in the browser for you. Two commands are provided:
@@ -50,6 +62,7 @@ yarn lint
 
 but it's even more useful when [run in your editor][eslint-integrations].
 
+[storybook]: https://storybook.js.org/
 [eslint]: http://eslint.org/
 [eslint-integrations]: http://eslint.org/docs/user-guide/integrations
 [karma]: http://karma-runner.github.io/

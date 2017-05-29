@@ -2,6 +2,14 @@
 
 > Create Skate.js components with Webpack
 
+This generator sets up a project scaffold that helps with a number of things:
+
+- Creating an easy-to-use development environment through [Storybook][storybook]
+- Styling components through [Sass][sass]
+- Localizing text
+- Testing component logic through [Karma][karma]
+- Bundling a preparing a production package with [Webpack 2][webpack]
+
 ## Installation
 
 Before you can install [`yeoman`][yeoman] and this generator, make sure you have Node.js 6.7.0 or better installed, as well as the [`yarn`][yarn] package manager.
@@ -11,6 +19,8 @@ With this complete, you can install the command line utilities that you need:
 ```bash
 yarn global add yo generator-skatejs
 ```
+
+The commands for running, testing and building your project are included in the generated README.
 
 ## Generating a new project
 
@@ -98,3 +108,7 @@ MIT © [Alex LaFroscia](alexlafroscia.com)
 [coveralls-url]: https://coveralls.io/github/alexlafroscia/generator-skatejs?branch=master
 [yeoman]: http://yeoman.io/
 [yarn]: https://yarnpkg.com
+[storybook]: https://storybook.js.org/
+[sass]: http://sass-lang.com/
+[karma]: https://karma-runner.github.io
+[webpack]: https://webpack.github.io/
