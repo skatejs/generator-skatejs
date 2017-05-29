@@ -11,6 +11,7 @@ test.serial('prompts for a component name if not given one', async () => {
 
   // Make sure that the initial component was created
   assert.file('src/components/x-foo/component.js');
+  assert.file('src/components/x-foo/story.js');
   assert.file('src/components/x-foo/styles.scss');
 
   // Make sure that the file was added to the index
@@ -93,13 +94,4 @@ test.serial('adds the new component to an existing index file', async () => {
   assert.fileContent('src/index.js', "import './components/x-foo/component.js';");
 
   assert.fileContent('src/index.js', "import 'skatejs-web-components';");
-});
-
-test.serial('adds the new class to the index file', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
-    .withPrompts({ componentName: 'x-foo' })
-    .toPromise();
-
-  // Make sure that the file was added to the index
-  assert.fileContent('src/index.js', "import './components/x-foo/component.js';");
 });

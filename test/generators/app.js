@@ -175,9 +175,13 @@ async function checkForFileMacro(t, fileName) {
 
 checkForFileMacro.title = (provided, input) => `generates the dotfile: ${input}`;
 
-test(checkForFileMacro, '.gitignore');
-test(checkForFileMacro, '.eslintrc.js');
 test(checkForFileMacro, '.esdoc.json');
+test(checkForFileMacro, '.eslintrc.js');
+test(checkForFileMacro, '.gitignore');
+test(checkForFileMacro, '.storybook/config.js');
+test(checkForFileMacro, '.storybook/webpack.config.js');
 test(checkForFileMacro, 'karma.conf.js');
-test(checkForFileMacro, 'webpack/.eslintrc.js');
+test(checkForFileMacro, 'stories/index.js');
+test(checkForFileMacro, 'stories/render.js');
 test(checkForFileMacro, 'test/.eslintrc.json');
+test(checkForFileMacro, 'webpack/.eslintrc.js');
