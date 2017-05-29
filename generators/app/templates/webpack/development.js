@@ -7,15 +7,17 @@ module.exports = {
     filename: '<%= initialComponentName %>.bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: [
+          'babel-loader'
+        ]
       },
       {
         test: /\.scss$/,
-        loaders: [
+        use: [
           'raw-loader',
           'sass-loader'
         ]
@@ -23,7 +25,7 @@ module.exports = {
       {
         test: /\.(yml|yaml)$/,
         include: resolve(__dirname, '../translations'),
-        loaders: [
+        use: [
           'json-loader',
           'yaml-loader'
         ]
