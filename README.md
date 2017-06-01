@@ -102,10 +102,10 @@ MIT © [Alex LaFroscia](alexlafroscia.com)
 
 [npm-image]: https://badge.fury.io/js/generator-skatejs.svg
 [npm-url]: https://npmjs.org/package/generator-skatejs
-[travis-image]: https://travis-ci.org/alexlafroscia/generator-skatejs.svg?branch=master
-[travis-url]: https://travis-ci.org/alexlafroscia/generator-skatejs
-[coveralls-image]: https://coveralls.io/repos/github/alexlafroscia/generator-skatejs/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/github/alexlafroscia/generator-skatejs?branch=master
+[travis-image]: https://travis-ci.org/skatejs/generator-skatejs.svg?branch=master
+[travis-url]: https://travis-ci.org/skatejs/generator-skatejs
+[coveralls-image]: https://coveralls.io/repos/github/skatejs/generator-skatejs/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/skatejs/generator-skatejs?branch=master
 [yeoman]: http://yeoman.io/
 [yarn]: https://yarnpkg.com
 [storybook]: https://storybook.js.org/
