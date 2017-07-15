@@ -91,7 +91,6 @@ module.exports = class extends Generator {
     // Basic project structure
     this._generatePackageJson();
     this._moveTemplateToProject('README.md');
-    this._moveToProject('.babelrc');
     this._moveToProject('.esdoc.json');
     this._moveToProject('.eslintrc.js');
     this._moveToProject('.gitignore');
@@ -187,12 +186,14 @@ module.exports = class extends Generator {
       'esdoc',
       'eslint',
       'eslint-plugin-import',
+      'find-root',
       'karma',
       'karma-chrome-launcher',
       'karma-mocha',
       'karma-webpack',
       'mocha',
       'node-sass',
+      'path-is-inside',
       'raw-loader',
       'react',
       'react-dom',
