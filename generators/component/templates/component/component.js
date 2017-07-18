@@ -17,6 +17,7 @@ export default class <%= className %> extends Component {
         { style(this, css) }
         <p class="text">
           Hello, world! I am <%= componentName %>!
+          <slot />
         </p>
       </div>
     );

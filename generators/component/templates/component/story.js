@@ -10,4 +10,9 @@ define(<%= className %>);
 storiesOf('<%= className %>', module)
   .add('it renders', () => (
     <<%= componentName %>></<%= componentName %>>
+  ))
+  .add('it can render content into the slot', () => (
+    <<%= componentName %>>
+      <p>This is some inner content</p>
+    </<%= componentName %>>
   ));
