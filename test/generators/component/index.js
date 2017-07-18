@@ -5,7 +5,7 @@ import assert from 'yeoman-assert';
 import helpers from 'yeoman-test';
 
 test.serial('prompts for a component name if not given one', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
+  await helpers.run(path.join(__dirname, '../../../generators/component'))
     .withPrompts({ componentName: 'x-foo' })
     .toPromise();
 
@@ -19,7 +19,7 @@ test.serial('prompts for a component name if not given one', async () => {
 });
 
 test.serial('can be given a component name to generate', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
+  await helpers.run(path.join(__dirname, '../../../generators/component'))
     .withArguments([ 'x-foo' ])
     .toPromise();
 
@@ -29,7 +29,7 @@ test.serial('can be given a component name to generate', async () => {
 });
 
 test.serial('throws an error if no name is provided', async (t) => {
-  const promise = helpers.run(path.join(__dirname, '../../generators/component'))
+  const promise = helpers.run(path.join(__dirname, '../../../generators/component'))
     .toPromise();
 
   const error = await t.throws(promise);
@@ -38,7 +38,7 @@ test.serial('throws an error if no name is provided', async (t) => {
 });
 
 test.serial('prevents creating components without a hyphen', async (t) => {
-  const promise = helpers.run(path.join(__dirname, '../../generators/component'))
+  const promise = helpers.run(path.join(__dirname, '../../../generators/component'))
     .withPrompts({ componentName: 'foo' })
     .toPromise();
 
@@ -48,7 +48,7 @@ test.serial('prevents creating components without a hyphen', async (t) => {
 });
 
 test.serial('registers the component with the correct name', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
+  await helpers.run(path.join(__dirname, '../../../generators/component'))
     .withPrompts({ componentName: 'x-foo' })
     .toPromise();
 
@@ -57,7 +57,7 @@ test.serial('registers the component with the correct name', async () => {
 });
 
 test.serial('adds a class name for the component', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
+  await helpers.run(path.join(__dirname, '../../../generators/component'))
     .withPrompts({ componentName: 'x-foo' })
     .toPromise();
 
@@ -66,7 +66,7 @@ test.serial('adds a class name for the component', async () => {
 });
 
 test.serial('makes a `describe` block with the right name', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
+  await helpers.run(path.join(__dirname, '../../../generators/component'))
     .withPrompts({ componentName: 'x-foo' })
     .toPromise();
 
@@ -75,7 +75,7 @@ test.serial('makes a `describe` block with the right name', async () => {
 });
 
 test.serial('generates the index file when one does not exist', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
+  await helpers.run(path.join(__dirname, '../../../generators/component'))
     .withPrompts({ componentName: 'x-foo' })
     .toPromise();
 
@@ -83,9 +83,9 @@ test.serial('generates the index file when one does not exist', async () => {
 });
 
 test.serial('adds the new component to an existing index file', async () => {
-  await helpers.run(path.join(__dirname, '../../generators/component'))
+  await helpers.run(path.join(__dirname, '../../../generators/component'))
     .inTmpDir((dir) => {
-      fs.copySync(path.join(__dirname, '../../generators/component/templates/src'), path.join(dir, 'src'));
+      fs.copySync(path.join(__dirname, '../../../generators/component/templates/src'), path.join(dir, 'src'));
     })
     .withPrompts({ componentName: 'x-foo' })
     .toPromise();
