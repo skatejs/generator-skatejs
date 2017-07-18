@@ -1,7 +1,7 @@
 /* global module */
 
 import { define } from 'skatejs';
-import h from '../../../stories/render';
+import h from '../../stories/render';
 import { storiesOf } from '@storybook/react';
 
 import CoverageInfo from './component.js';

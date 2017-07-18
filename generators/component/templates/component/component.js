@@ -1,6 +1,6 @@
 import { Component, define, h } from 'skatejs';
 
-import style from '../../util/style.js';
+import style from '../util/style.js';
 import css from './styles.scss';
 
 export default class <%= className %> extends Component {
