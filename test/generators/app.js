@@ -9,8 +9,8 @@ test.serial('creates a component with the correct name', async () => {
     .withPrompts({ userProvidedComponentName: 'x-foo' })
     .toPromise();
 
-  assert.file('src/components/x-foo/component.js');
-  assert.file('src/components/x-foo/styles.scss');
+  assert.file('src/x-foo/component.js');
+  assert.file('src/x-foo/styles.scss');
 });
 
 test.serial('can be given a component name as an argument', async () => {
@@ -18,8 +18,8 @@ test.serial('can be given a component name as an argument', async () => {
     .withArguments([ 'my-cool-component' ])
     .toPromise();
 
-  assert.file('src/components/my-cool-component/component.js');
-  assert.file('src/components/my-cool-component/styles.scss');
+  assert.file('src/my-cool-component/component.js');
+  assert.file('src/my-cool-component/styles.scss');
 
   assert.jsonFileContent('package.json', {
     name: 'my-cool-component',
@@ -93,7 +93,7 @@ test.serial('can add to an existing package.json', async () => {
     name: 'x-foo'
   });
 
-  assert.file('src/components/x-foo/component.js');
+  assert.file('src/x-foo/component.js');
 });
 
 test.serial('uses the existing author name if present', async () => {
@@ -109,7 +109,7 @@ test.serial('uses the existing author name if present', async () => {
     name: 'x-foo-bar'
   });
 
-  assert.file('src/components/x-foo-bar/component.js');
+  assert.file('src/x-foo-bar/component.js');
 });
 
 test.serial('does not override the existing author name', async () => {
@@ -126,7 +126,7 @@ test.serial('does not override the existing author name', async () => {
     name: 'existing-package-name'
   });
 
-  assert.file('src/components/x-foo-bar/component.js');
+  assert.file('src/x-foo-bar/component.js');
 });
 
 test.serial('does not override the existing description', async () => {

@@ -46,7 +46,7 @@ module.exports = class extends Generator {
 
   writing() {
     const { componentName } = this.props;
-    const componentDestinationPath = `src/components/${componentName}/component.js`;
+    const componentDestinationPath = `src/${componentName}/component.js`;
     const indexFilePath = this.destinationPath('src/index.js');
 
     if (!this.fs.exists(indexFilePath)) {
@@ -64,17 +64,17 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('component/story.js'),
-      this.destinationPath(`src/components/${componentName}/story.js`),
+      this.destinationPath(`src/${componentName}/story.js`),
       this.props
     );
 
     this.fs.copy(
       this.templatePath('component/styles.scss'),
-      this.destinationPath(`src/components/${componentName}/styles.scss`)
+      this.destinationPath(`src/${componentName}/styles.scss`)
     );
 
     this.fs.copyTpl(
-      this.templatePath('test/component/component-test.js'),
+      this.templatePath('test/component-test.js'),
       this.destinationPath(`test/components/${componentName}-test.js`),
       this.props
     );
