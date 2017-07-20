@@ -41,7 +41,7 @@
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
   },
-  "repository": "alexlafroscia/generator-skatejs",
+  "repository": "skatejs/generator-skatejs",
   "scripts": {
     "report": "nyc report --reporter=html && open coverage/index.html",
     "report:coveralls": "nyc report --reporter=text-lcov | coveralls",
