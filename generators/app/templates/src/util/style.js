@@ -13,12 +13,14 @@ const $template = Symbol();
  *   ...
  *
  *   renderCallback() {
- *     return [
- *       style(this, css),
- *       <p>
- *         Put the rest of the contents next to it
- *       </p>
- *     ];
+ *     return (
+ *       <div>
+ *         { style(this, css) }
+ *         <p>
+ *           Hello, world!
+ *         </p>
+ *       </div>
+ *     );
  *   }
  * }
  *
