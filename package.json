@@ -31,7 +31,7 @@
     "yosay": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "0.18.2",
+    "ava": "0.25.0",
     "common-tags": "1.4.0",
     "coveralls": "2.12.0",
     "eslint": "3.18.0",
