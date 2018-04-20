@@ -1,4 +1,4 @@
-# generator-skatejs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+# [UNMAINTAINED] generator-skatejs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 > Create Skate.js components with Webpack
 
